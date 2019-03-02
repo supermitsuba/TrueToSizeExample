@@ -1,0 +1,9 @@
+FROM node:10.15.2-jessie
+
+WORKDIR /usr/src/true-to-size
+
+EXPOSE 3000
+
+RUN npm install
+
+CMD ["npm", "start"]

@@ -1,0 +1,45 @@
+version: '2'
+services:
+  database:
+    image: postgres:11
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+    volumes:
+      # host/container
+      - ../postgres/scripts/01-CreateDatabase.sql:/docker-entrypoint-initdb.d/01-CreateDatabase.sql
+      - ../postgres/scripts/02-CreateTable.sql:/docker-entrypoint-initdb.d/02-CreateTable.sql
+  webserver:
+    build: 
+      context: .
+      dockerfile: web-server-dockerfile
+    restart: always
+    ports:
+      - 3000:3000
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DBUSER: stockx
+      DBPWD: stockx
+      DBHOST: database
+      DBDATABASENAME: stockx
+      DBPORT: 5432
+    volumes:
+      - ../src:/usr/src/true-to-size
+      - ../postgres:/usr/src/postgres
+    links:
+      - database
+  acceptance-test:
+    build:
+      context: .
+      dockerfile: acceptance-dockerfile
+    environment:
+      WEBURL: http://webserver:3000
+      SETUPDB: '1'
+    volumes:
+      - ../acceptance-test:/usr/src/tests
+    links:
+      - webserver

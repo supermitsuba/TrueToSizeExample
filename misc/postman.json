@@ -1,0 +1,194 @@
+{
+	"id": "643f7feb-c83b-312b-595f-18848a2723e3",
+	"name": "Stock X True To Size",
+	"description": "",
+	"order": [
+		"31beec4c-246c-2429-384d-c38de262fac8",
+		"f7b7efaa-2bdd-7437-fa6a-5d82fdffdb9d",
+		"9d746075-42ea-362e-7418-f72ea74f9b2a",
+		"6fb7e452-7a0a-761e-ce96-09b616f27238",
+		"446acc89-033d-5b52-915e-d0424f58055d",
+		"20c31fa3-d142-0acc-5bc6-27006bbb7766"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1551568905237,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "20c31fa3-d142-0acc-5bc6-27006bbb7766",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/stockx/v1/models/1/true-to-size",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "643f7feb-c83b-312b-595f-18848a2723e3",
+			"data": [],
+			"dataMode": "raw",
+			"name": "True-To-Size",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1551574147803,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"size\": 3\n}"
+		},
+		{
+			"id": "31beec4c-246c-2429-384d-c38de262fac8",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:3000/database/initialize",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "643f7feb-c83b-312b-595f-18848a2723e3",
+			"data": null,
+			"dataMode": "params",
+			"name": "database initialize",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1551568907322,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "446acc89-033d-5b52-915e-d0424f58055d",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/stockx/v1/models/15/stats",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "643f7feb-c83b-312b-595f-18848a2723e3",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Post Stats",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1551573179192,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"size\": 5\n}"
+		},
+		{
+			"id": "6fb7e452-7a0a-761e-ce96-09b616f27238",
+			"headers": "Content-Type: application/javascript\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/javascript",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/stockx/v1/models/15",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "643f7feb-c83b-312b-595f-18848a2723e3",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Get Models By Id",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1551571215949,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"model\": {\n\t\t\"name\": \"Yeezy\",\n\t\t\"description\": \"The new Adidas Yeezy shoes\",\n\t\t\"company\": \"Adidas\"\n\t}\n}"
+		},
+		{
+			"id": "9d746075-42ea-362e-7418-f72ea74f9b2a",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/stockx/v1/models",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1551571080392,
+			"name": "Post Models",
+			"description": "",
+			"collectionId": "643f7feb-c83b-312b-595f-18848a2723e3",
+			"responses": [],
+			"rawModeData": "{\n\t\"name\": \"Yeezy\",\n\t\"description\": \"The new Adidas Yeezy shoes\",\n\t\"company\": \"Adidas\"\n}"
+		},
+		{
+			"id": "f7b7efaa-2bdd-7437-fa6a-5d82fdffdb9d",
+			"headers": "Content-Type: application/javascript\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/javascript",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/stockx/v1/models",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1551569174124,
+			"name": "Get Models",
+			"description": "",
+			"collectionId": "643f7feb-c83b-312b-595f-18848a2723e3",
+			"responses": [],
+			"rawModeData": "{\n\t\"model\": {\n\t\t\"name\": \"Yeezy\",\n\t\t\"description\": \"The new Adidas Yeezy shoes\",\n\t\t\"company\": \"Adidas\"\n\t}\n}"
+		}
+	]
+}
