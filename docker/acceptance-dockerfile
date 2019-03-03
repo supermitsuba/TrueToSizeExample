@@ -1,9 +1,7 @@
 FROM node:10.15.2-jessie
 
-WORKDIR /usr/src/tests
-
-EXPOSE 3000
-
+RUN git clone https://github.com/supermitsuba/TrueToSizeExample.git /usr/src/tests
+WORKDIR /usr/src/tests/acceptance-test
 RUN npm install
-
+EXPOSE 3000
 CMD ["npm", "test"]

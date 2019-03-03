@@ -26,16 +26,16 @@ The goal is to create a service to calculate new true-to-size data through HTTP 
 ## API design
 
 This gets all the product models that are in the database.  i.e. `adidas yeezy`
-stockx/v1/models/
+- stockx/v1/models/
 
 This gets one product model based on it's id.
-stockx/v1/models/{id}
+- stockx/v1/models/{id}
 
 This is the stats for a given model.  So everything from size to whatever is important to crunch numbers.
-stockx/v1/models/{id}/stats
+- stockx/v1/models/{id}/stats
 
 This gets the true to size value for a given product model.
-stockx/v1/models/{id}/TrueToSize
+- stockx/v1/models/{id}/TrueToSize
 
 For more information about the API, check out the postman import script.  It is located under misc/postman.json
 
@@ -79,3 +79,7 @@ TrueToSize
 6.  I noticed that you probably want to know when and who entered data for auditing reasons.  Its not needed but I added it as something to help.
 
 7.  Datetime gets wacky in containers.  One reason is that containers dont sync up to datetime servers by default.  Also, you would need to localize the datetime from the server to the client.  I havent done this.
+
+8.  I could have built the images based on my local code, as opposed to git, but I was having issues finding what the disconnect was, so I opted to clone my repo instead.  The result is the same for this, but for work code, I would opt for the former option.
+
+9.  Error messages could be improved.  While I do catch and transform them, the acceptance tests don't leverage them as well.  Also the postgres errors are a bit boring.

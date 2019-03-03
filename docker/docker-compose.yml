@@ -2,7 +2,6 @@ version: '2'
 services:
   database:
     image: postgres:11
-    restart: always
     ports:
       - 5432:5432
     environment:
@@ -16,7 +15,6 @@ services:
     build: 
       context: .
       dockerfile: web-server-dockerfile
-    restart: always
     ports:
       - 3000:3000
     environment:
@@ -28,7 +26,6 @@ services:
       DBDATABASENAME: stockx
       DBPORT: 5432
     volumes:
-      - ../src:/usr/src/true-to-size
       - ../postgres:/usr/src/postgres
     links:
       - database
@@ -39,7 +36,5 @@ services:
     environment:
       WEBURL: http://webserver:3000
       SETUPDB: '1'
-    volumes:
-      - ../acceptance-test:/usr/src/tests
     links:
       - webserver

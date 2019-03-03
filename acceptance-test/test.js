@@ -14,7 +14,7 @@ async function productName() {
         rl.question("What is the name of your product? ", function (answer) {
             if (answer === null || answer === '') {
                 console.log('Please enter a valid product name.')
-                reject()
+                reject('Please restart')
             } else {
                 resolve(answer)
             }
@@ -24,26 +24,24 @@ async function productName() {
 }
 
 async function trueSizesToInput() {
-    return new Promise(
-        (resolve, reject) => {
+    return new Promise((resolve, reject) => {
             rl.question('Please enter all the true to size values (separated by commas):', function (answer) {
                 if (answer === null || answer === '') {
                     console.log('Please enter a valid set of numbers.')
-                    reject()
+                    reject('Please restart')
                 }
 
                 const list = answer.split(',')
-                // for (var i = 0; i < list.length; i++) {
-                //     if (list[i] < 0 || list[i] > 5) {
-                //         console.log('Please enter a valid set of numbers.')
-                //         reject()
-                //     }
-                // }
+                for (var i = 0; i < list.length; i++) {
+                    if (list[i] < 1 || list[i] > 5) {
+                        console.log(`Please enter a valid set of numbers. ${list[i]} is invalid`)
+                        reject('Please restart')
+                    }
+                }
 
                 resolve(list)
             })
-        }
-    )
+        })
 }
 
 async function Get(url) {
@@ -53,8 +51,8 @@ async function Get(url) {
             if (!error && response.statusCode == 200) {
                 resolve(body)
             } else {
-                console.log(`Error POSTING: ${error} ${body} ${response}`)
-                reject(error)
+                console.log(`Error POSTING: ${JSON.stringify(error)} ${JSON.stringify(body)} ${JSON.stringify(response)}`)
+                reject('Please restart')
             }
         })
     })
@@ -71,8 +69,8 @@ async function Post(url, value) {
                 if (!error && response.statusCode == 200) {
                     resolve(body)
                 } else {
-                    console.log(`Error POSTING: ${error} ${body} ${response}`)
-                    reject(error)
+                    console.log(`Error POSTING: ${JSON.stringify(error)} ${JSON.stringify(body)} ${JSON.stringify(response)}`)
+                    reject('Please restart')
                 }
             })
         })
