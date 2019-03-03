@@ -18,7 +18,6 @@ async function productName() {
             } else {
                 resolve(answer)
             }
-            //rl.close();
         })
     })
 }
@@ -82,9 +81,13 @@ async function main() {
         await Post(`${url}/database/initialize`, null)
     }
 
-    const name = await productName()
-    if (name == null || name === '') {
-        return
+    var name = ''
+    while(name === '' || name === null) {
+        try {
+          name = await productName()
+        } catch (error) {
+          name = ''
+        }
     }
 
     var modelUrl = `${url}/stockx/v1/models`
