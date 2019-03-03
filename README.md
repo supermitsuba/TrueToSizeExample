@@ -62,7 +62,7 @@ TrueToSize
 
 ## Sample output
 
-![output]()
+![output](https://raw.githubusercontent.com/supermitsuba/TrueToSizeExample/master/misc/output.png)
 
 ## Considerations
 
