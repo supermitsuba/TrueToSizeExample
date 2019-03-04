@@ -22,7 +22,7 @@ async function productName() {
     })
 }
 
-async function trueSizesToInput() {
+async function trueSizesToInput(modelId) {
     return new Promise((resolve, reject) => {
             rl.question('Please enter all the true to size values (separated by commas):', function (answer) {
                 if (answer === null || answer === '') {
@@ -37,6 +37,14 @@ async function trueSizesToInput() {
                         console.log(`Please enter a valid set of numbers. ${list[i]} is invalid`)
                         reject('Please restart')
                         return
+                    } else {
+                        try {
+                            console.log(`Adding ${i+1}: ${list[i]}`)
+                            await Post(`${url}/stockx/v1/models/${modelId}/stats`, { size: list[i] })
+                        } catch (error) {
+                            reject('Please restart')
+                            return
+                        }
                     }
                 }
 
@@ -47,7 +55,7 @@ async function trueSizesToInput() {
 
 async function Get(url) {
     var option = { method: 'get', url: url }
-    return new Promise( (resolve, reject) =>{
+    return new Promise( (resolve, reject) => {
         request(option, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 resolve(body)
@@ -98,17 +106,11 @@ async function main() {
 
     var values = null
     while (values === null) {
-        console.log('Asking now')
         try {
-            values = await trueSizesToInput()
+            values = await trueSizesToInput(model.result.id)
         } catch (error) {
             values = null
         }
-    }
-
-    for (var i = 0; i < values.length; i++) {
-        console.log(`Adding ${i+1}: ${values[i]}`)
-        await Post(`${url}/stockx/v1/models/${model.result.id}/stats`, { size: values[i] })
     }
 
     console.log('Now calculating true to size...')
