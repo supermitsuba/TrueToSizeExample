@@ -82,7 +82,7 @@ async function main() {
     }
 
     var name = ''
-    while(name === '' || name === null) {
+    while (name === '' || name === null) {
         try {
           name = await productName()
         } catch (error) {
@@ -94,13 +94,13 @@ async function main() {
     const model = await Post(modelUrl, { name: name, description: 'test', company: 'test' })
     console.log(`The new product model you created is at: ${modelUrl}/${model.result.id}`)
 
-    var values = [] 
-    while(values === []) {
+    var values = null
+    while (values === null) {
+        console.log('Asking now')
         try {
             values = await trueSizesToInput()
-        } catch(error)
-        {
-            values = []
+        } catch(error) {
+            values = null
         }
     }
 

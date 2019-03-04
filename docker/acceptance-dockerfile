@@ -1,6 +1,6 @@
 FROM node:10.15.2-jessie
 
-RUN git clone https://github.com/supermitsuba/TrueToSizeExample.git /usr/src/tests
+RUN git clone --branch fixes https://github.com/supermitsuba/TrueToSizeExample.git /usr/src/tests
 WORKDIR /usr/src/tests/acceptance-test
 RUN npm install
 EXPOSE 3000
