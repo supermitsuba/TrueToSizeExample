@@ -41,6 +41,7 @@ async function trueSizesToInput(modelId) {
                         console.log(`Adding ${i+1}: ${list[i]}`)
                         Post(`${url}/stockx/v1/models/${modelId}/stats`, { size: list[i] })
                             .catch( error => {
+                                console.log('aaaaaaaa')
                                 reject('Please restart')
                                 return
                             })
