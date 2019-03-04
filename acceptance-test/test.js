@@ -38,13 +38,12 @@ async function trueSizesToInput(modelId) {
                         reject('Please restart')
                         return
                     } else {
-                        try {
-                            console.log(`Adding ${i+1}: ${list[i]}`)
-                            await Post(`${url}/stockx/v1/models/${modelId}/stats`, { size: list[i] })
-                        } catch (error) {
-                            reject('Please restart')
-                            return
-                        }
+                        console.log(`Adding ${i+1}: ${list[i]}`)
+                        Post(`${url}/stockx/v1/models/${modelId}/stats`, { size: list[i] })
+                            .catch( error => {
+                                reject('Please restart')
+                                return
+                            })
                     }
                 }
 
