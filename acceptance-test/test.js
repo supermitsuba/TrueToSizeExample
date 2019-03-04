@@ -28,6 +28,7 @@ async function trueSizesToInput() {
                 if (answer === null || answer === '') {
                     console.log('Please enter a valid set of numbers.')
                     reject('Please restart')
+                    return
                 }
 
                 const list = answer.split(',')
@@ -35,6 +36,7 @@ async function trueSizesToInput() {
                     if (list[i] < 1 || list[i] > 5) {
                         console.log(`Please enter a valid set of numbers. ${list[i]} is invalid`)
                         reject('Please restart')
+                        return
                     }
                 }
 
@@ -99,7 +101,7 @@ async function main() {
         console.log('Asking now')
         try {
             values = await trueSizesToInput()
-        } catch(error) {
+        } catch (error) {
             values = null
         }
     }
