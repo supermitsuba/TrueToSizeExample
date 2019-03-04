@@ -94,10 +94,14 @@ async function main() {
     const model = await Post(modelUrl, { name: name, description: 'test', company: 'test' })
     console.log(`The new product model you created is at: ${modelUrl}/${model.result.id}`)
 
-    const values = await trueSizesToInput()
-    if (values == null || values.length < 1) {
-        console.log('Incorrect values, exiting')
-        return
+    var values = [] 
+    while(values === []) {
+        try {
+            values = await trueSizesToInput()
+        } catch(error)
+        {
+            values = []
+        }
     }
 
     for (var i = 0; i < values.length; i++) {

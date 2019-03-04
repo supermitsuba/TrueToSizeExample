@@ -35,6 +35,6 @@ services:
       dockerfile: acceptance-dockerfile
     environment:
       WEBURL: http://webserver:3000
-      SETUPDB: '1'
+      SETUPDB: '0'
     links:
       - webserver
